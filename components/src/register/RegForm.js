@@ -7,27 +7,30 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 export const RegForm = ({onChange,onSumbit,user}) =>(
     <KeyboardAvoidingView  behavior="padding">
         <Form style={styles.container}>
-            <Item stackedLabel>
+            <Item floatingLabel>
               <Label style={styles.label}>Nombre(s)</Label>
+               <Icon active name='person' style={styles.icono} />
               <Input 
                 name="name"
                 style={styles.texto}
                 onChangeText={value=>onChange("name",value)}
              />
+             
             </Item>
             <Grid>
                 <Col >
-                    <Item stackedLabel>
+                    <Item floatingLabel>
                         <Label style={styles.label}>Apellido Paterno</Label>
                         <Input 
                             name="surname"
                             style={styles.texto}
                             onChangeText={value=>onChange("surname",value)}
                         />
+                        
                     </Item>
                 </Col>
                 <Col >
-                    <Item stackedLabel>
+                    <Item floatingLabel>
                         <Label style={styles.label}>Apellido Materno</Label>
                         <Input 
                             name="lastname"
@@ -38,8 +41,9 @@ export const RegForm = ({onChange,onSumbit,user}) =>(
                 </Col>
             </Grid>      
 
-            <Item stackedLabel>
+            <Item floatingLabel>
               <Label style={styles.label}>Telefono Celular</Label>
+              <Icon active name='phone-portrait' style={styles.icono} />
               <Input
                 name="phone" 
                 keyboardType="numeric"
@@ -47,8 +51,9 @@ export const RegForm = ({onChange,onSumbit,user}) =>(
                 onChangeText={value=>onChange("phone",value)}
               />
             </Item>
-            <Item stackedLabel>
+            <Item floatingLabel>
               <Label style={styles.label}>Contraseña</Label>
+              <Icon active name='md-unlock' style={styles.icono} />
               <Input
                 name="password" 
                 secureTextEntry={true}
@@ -56,20 +61,24 @@ export const RegForm = ({onChange,onSumbit,user}) =>(
                 onChangeText={value=>onChange("password",value)}
               />
             </Item>
-            <Item stackedLabel>
+            <Item floatingLabel>
               <Label style={styles.label}>Confirmar Contraseña</Label>
               <Input
                 name="passwordConfirmation"
                 style={styles.texto}
                 secureTextEntry={true}
+                maxLength={10}
                 onChangeText={value=>onChange("passwordConfirmation",value)} 
                 />
             </Item>
         </Form>
         <View style={styles.footContent}>
-            <Button full  rounded  style={styles.boton} onPress={onSumbit}>
-                    <Text>ENVIAR REGISTRO</Text>
-            </Button>
+            <View>
+                <Button   rounded  style={styles.boton} onPress={onSumbit}>
+                        <Text>ENVIAR REGISTRO</Text>
+                </Button>
+            </View>
+           
             <Text style={styles.texto}>¿Ya tienes cuentas? Inicia Sesión</Text>
         </View>
     </KeyboardAvoidingView>
@@ -79,11 +88,13 @@ export const RegForm = ({onChange,onSumbit,user}) =>(
 
 const styles = StyleSheet.create({
     container:{
-        padding:20
+        padding:20,
+        marginBottom:5
     },
     texto:{
         color:'#fff',
-        fontSize:16,
+        fontSize:20,
+        justifyContent:'flex-end'
 
     },
     label:{
@@ -96,7 +107,11 @@ const styles = StyleSheet.create({
     },
     boton:{
         backgroundColor:'#f4912a',
-        borderRadius:20
+        borderRadius:20,
+        width:'70%'
+    },
+    icono:{
+        color:'#fff',
     }
 
 })

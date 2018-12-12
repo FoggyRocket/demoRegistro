@@ -55,7 +55,7 @@ onSumbit=()=>{
       .then(r => {
         Alert.alert(
           'Felicidades',
-          msgE,
+          msgR,
           [
               {
                   text: 'ok',
